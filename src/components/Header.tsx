@@ -11,6 +11,7 @@ export const Header = () => {
         maxWidth={1440}
         h="24"
         mx="auto"
+        px="6"
       >
         <Image src="/images/Logo.svg" width={180} height={45} alt="Logo" />
       </Flex>
