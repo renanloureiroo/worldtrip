@@ -12,6 +12,8 @@ import type { NextPage } from "next"
 import Head from "next/head"
 import Image from "next/image"
 
+import { Swiper, SwiperSlide } from "swiper/react"
+
 const Home: NextPage = () => {
   return (
     <Flex
@@ -94,6 +96,59 @@ const Home: NextPage = () => {
       </Stack>
 
       <Divider w="24" mt="20" borderColor="brand.900" />
+      <Heading textAlign="center" fontWeight="medium" fontSize="4xl" mt="12">
+        Vamos nessa?
+        <br />
+        Então escolha seu continente
+      </Heading>
+
+      <Flex w="100%" h="450px" maxW="1240px" mx="auto">
+        <Swiper
+          slidesPerView={1}
+          navigation
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          autoplay={{
+            delay: 4000,
+          }}
+          style={{ width: "100%", flex: "1" }}
+        >
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+            >
+              slide 1
+            </Flex>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+            >
+              slide2
+            </Flex>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Flex
+              w="100%"
+              h="100%"
+              align="center"
+              justify="center"
+              direction="column"
+            >
+              slide 3
+            </Flex>
+          </SwiperSlide>
+        </Swiper>
+      </Flex>
     </Flex>
   )
 }
