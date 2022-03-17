@@ -8,13 +8,34 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react"
-import type { NextPage } from "next"
+import type { GetStaticProps } from "next"
 import Head from "next/head"
 import Image from "next/image"
 
-import { Swiper, SwiperSlide } from "swiper/react"
+import * as Prismic from "@prismicio/client"
 
-const Home: NextPage = () => {
+import { Swiper, SwiperSlide } from "swiper/react"
+import { prismicClient } from "../services/prismic"
+import { Banner } from "../components/Banner"
+
+type ContinentType = {
+  id: string
+  data: {
+    name: string
+    curiosity: string
+    photo: {
+      url: string
+      alt: string
+    }
+  }
+}
+
+interface Props {
+  continents: ContinentType[]
+}
+
+const Home = ({ continents }: Props) => {
+  console.log(continents)
   return (
     <Flex
       direction="column"
@@ -29,38 +50,7 @@ const Home: NextPage = () => {
         <title>Worldtrip | Home </title>
       </Head>
 
-      {/* banner */}
-      <Flex
-        h="80"
-        align="center"
-        bgImage="/images/Background.png"
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-      >
-        <Box px="36" flex="1">
-          <Heading color="brand.50" fontSize="4xl" fontWeight="medium">
-            5 Continentes,
-            <br />
-            infinitas possibilidades.
-          </Heading>
-
-          <Text color="brand.50" mt="6">
-            Chegou a hora de turara do papel a viagem que você
-            <br />
-            sempre sonhou
-          </Text>
-        </Box>
-
-        <Box flex="1" alignSelf="flex-end" mb="-10">
-          <Image
-            src="/images/Airplane.png"
-            width={417}
-            height={270}
-            alt="avião"
-          />
-        </Box>
-      </Flex>
-      {/* fim do banner */}
+      <Banner />
 
       <Stack direction="row" mt="28" spacing="24" px="6">
         <Stack align="center" justify="center">
@@ -101,56 +91,41 @@ const Home: NextPage = () => {
         <br />
         Então escolha seu continente
       </Heading>
-
-      <Flex w="100%" h="450px" maxW="1240px" mx="auto">
-        <Swiper
-          slidesPerView={1}
-          navigation
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          autoplay={{
-            delay: 4000,
-          }}
-          style={{ width: "100%", flex: "1" }}
-        >
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h="100%"
-              align="center"
-              justify="center"
-              direction="column"
-            >
-              slide 1
-            </Flex>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h="100%"
-              align="center"
-              justify="center"
-              direction="column"
-            >
-              slide2
-            </Flex>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <Flex
-              w="100%"
-              h="100%"
-              align="center"
-              justify="center"
-              direction="column"
-            >
-              slide 3
-            </Flex>
-          </SwiperSlide>
-        </Swiper>
-      </Flex>
     </Flex>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await prismicClient.get({
+    predicates: [Prismic.predicate.at("document.type", "continents")],
+    fetch: [
+      "continents.continent_name",
+      "continents.curiosity",
+      "continents.slider_image",
+    ],
+  })
+  const continents = response.results.map((continent) => {
+    return {
+      id: continent.uid,
+      data: {
+        name: continent.data.continent_name,
+        curiosity: continent.data.curiosity,
+        photo: {
+          url: continent.data.slider_image.url,
+          alt: continent.data.slider_image.alt,
+        },
+      },
+    }
+  })
+  console.log(JSON.stringify(response.results, null, 2))
+
+  return {
+    props: {
+      continents,
+    },
+
+    revalidate: 60 * 60 * 24 * 7, // 7 days
+  }
 }
 
 export default Home

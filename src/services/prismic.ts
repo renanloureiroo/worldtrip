@@ -1,4 +1,4 @@
-import Prismic from "@prismicio/client"
+import * as Prismic from "@prismicio/client"
 
 const endpoint = process.env.PRISMIC_ENDPOINT
 
