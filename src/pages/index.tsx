@@ -37,7 +37,7 @@ interface Props {
 }
 
 const Home = ({ continents }: Props) => {
-  const theme = useTheme()
+  console.log(continents)
 
   return (
     <Flex

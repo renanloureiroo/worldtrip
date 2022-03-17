@@ -1,6 +1,7 @@
-import { Flex, Heading, Text } from "@chakra-ui/react"
+import { Box, Flex, Heading, Text } from "@chakra-ui/react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Autoplay } from "swiper"
+import Link from "next/link"
 type ContinentType = {
   id: string
   data: {
@@ -53,13 +54,17 @@ export const Slider = ({ continents }: SliderProps) => {
               bgSize="cover"
               textAlign="center"
             >
-              <Heading fontSize="5xl" fontWeight="bold" color="brand.50">
-                {continent.data.name}
-              </Heading>
+              <Link href={`/${continent.id}`} passHref>
+                <Box>
+                  <Heading fontSize="5xl" fontWeight="bold" color="brand.50">
+                    {continent.data.name}
+                  </Heading>
 
-              <Text fontSize="2xl" fontWeight="bold" color="brand.50">
-                {continent.data.curiosity}
-              </Text>
+                  <Text fontSize="2xl" fontWeight="bold" color="brand.50">
+                    {continent.data.curiosity}
+                  </Text>
+                </Box>
+              </Link>
             </Flex>
           </SwiperSlide>
         ))}
