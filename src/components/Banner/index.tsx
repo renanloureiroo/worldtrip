@@ -6,7 +6,10 @@ import { Illustration } from "./Illustration"
 const Banner = () => {
   return (
     <Flex
-      h="80"
+      w="100%"
+      maxW={1440}
+      h={335}
+      mx="auto"
       align="center"
       bgImage="/images/Background.png"
       backgroundSize="cover"
