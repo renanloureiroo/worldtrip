@@ -54,8 +54,8 @@ export const Slider = ({ continents }: SliderProps) => {
               bgSize="cover"
               textAlign="center"
             >
-              <Link href={`/${continent.id}`} passHref>
-                <Box>
+              <Link href={`/continents/${continent.id}`} passHref>
+                <Box cursor="pointer">
                   <Heading fontSize="5xl" fontWeight="bold" color="brand.50">
                     {continent.data.name}
                   </Heading>

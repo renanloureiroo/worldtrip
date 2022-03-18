@@ -1,11 +1,30 @@
-import { Box, Flex, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react"
+import React from "react"
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Icon,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  SimpleGrid,
+  Stack,
+  Text,
+  Tooltip,
+} from "@chakra-ui/react"
 import { GetServerSideProps } from "next"
 import Head from "next/head"
-import { Banner } from "../components/Continent/Banner"
-import { prismicClient } from "../services/prismic"
+import { Banner } from "../../components/Continent/Banner"
+import { prismicClient } from "../../services/prismic"
 
 import Image from "next/image"
-import { url } from "inspector"
+
+import { FiAlertCircle } from "react-icons/fi"
 
 type ImageType = {
   alt: string
@@ -91,7 +110,21 @@ const Continent = ({ continent }: ContinentProps) => {
               27
             </Text>
             <Text fontWeight="semibold" fontSize="2xl">
-              línguas
+              cidades +100{" "}
+              <Tooltip
+                hasArrow
+                label="Cidades mais visitadas!"
+                aria-label="informação"
+              >
+                <span>
+                  <Icon
+                    cursor="pointer"
+                    as={FiAlertCircle}
+                    fontSize="md"
+                    color="brand.700"
+                  />
+                </span>
+              </Tooltip>
             </Text>
           </Flex>
         </Stack>
@@ -99,11 +132,11 @@ const Continent = ({ continent }: ContinentProps) => {
 
       <Box my="20" w="100%" maxW={1200} px={5}>
         <Heading fontWeight="medium" fontSize="4xl">
-          cidades +100
+          Cidades +100
         </Heading>
-        <Flex wrap="wrap" alignItems="flex-start" gap="46px" flex="1" mt="10">
+        <Flex wrap="wrap" alignItems="flex-start" gap="40px" flex="1" mt="10">
           {continent.cities_top.map((city) => (
-            <Box bg="white" width={256} zIndex={1} key={city.name}>
+            <Box bg="white" width={256} key={city.name}>
               <Box
                 w="256px"
                 height="173px"
