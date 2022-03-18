@@ -15,10 +15,10 @@ import * as Prismic from "@prismicio/client"
 import { Navigation, Pagination, Autoplay } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { prismicClient } from "../services/prismic"
-import { Banner } from "../components/Banner"
-import { Curiosities } from "../components/Curiosities"
-import { Subtitle } from "../components/Subtitle"
-import { Slider } from "../components/Slider"
+import { Banner } from "../components/Home/Banner"
+import { Curiosities } from "../components/Home/Curiosities"
+import { Subtitle } from "../components/Home/Subtitle"
+import { Slider } from "../components/Home/Slider"
 
 type ContinentType = {
   id: string
