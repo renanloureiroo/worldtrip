@@ -57,7 +57,7 @@ const Home = ({ continents }: Props) => {
 
       <Curiosities />
 
-      <Divider w="24" mt="20" borderColor="brand.900" />
+      <Divider w="24" mt={["9", "20"]} borderColor="brand.900" />
 
       <Subtitle />
 

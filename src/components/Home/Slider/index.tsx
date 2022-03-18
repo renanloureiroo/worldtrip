@@ -23,10 +23,10 @@ export const Slider = ({ continents }: SliderProps) => {
     <Flex
       borderBottomWidth={2}
       w="100%"
-      h="450px"
+      h={["250px", "450px"]}
       maxW={1240}
       mx="auto"
-      my="14"
+      my={["5", "14"]}
     >
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -56,11 +56,19 @@ export const Slider = ({ continents }: SliderProps) => {
             >
               <Link href={`/continents/${continent.id}`} passHref>
                 <Box cursor="pointer">
-                  <Heading fontSize="5xl" fontWeight="bold" color="brand.50">
+                  <Heading
+                    fontSize={["xl", "5xl"]}
+                    fontWeight="bold"
+                    color="brand.50"
+                  >
                     {continent.data.name}
                   </Heading>
 
-                  <Text fontSize="2xl" fontWeight="bold" color="brand.50">
+                  <Text
+                    fontSize={["sm", "2xl"]}
+                    fontWeight="bold"
+                    color="brand.50"
+                  >
                     {continent.data.curiosity}
                   </Text>
                 </Box>

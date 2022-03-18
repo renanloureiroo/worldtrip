@@ -1,4 +1,4 @@
-import { Stack, Text } from "@chakra-ui/react"
+import { Box, Stack, Text, useBreakpointValue } from "@chakra-ui/react"
 import Image, { ImageProps } from "next/image"
 
 interface CuriosityCardProps extends ImageProps {
@@ -11,9 +11,21 @@ export const CuriosityCard = ({
   title,
   ...rest
 }: CuriosityCardProps) => {
+  const visibilityImage = useBreakpointValue({
+    base: false,
+    md: true,
+  })
   return (
-    <Stack align="center" justify="center">
-      <Image src={src} alt={alt} width={85} height={85} {...rest} />
+    <Stack
+      direction={visibilityImage ? "column" : "row"}
+      align="center"
+      justify="center"
+    >
+      {visibilityImage ? (
+        <Image src={src} alt={alt} width={85} height={85} {...rest} />
+      ) : (
+        <Box w={2} h={2} bg="brand.500" borderRadius="4px" />
+      )}
       <Text>{title}</Text>
     </Stack>
   )

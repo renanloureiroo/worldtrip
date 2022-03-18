@@ -37,7 +37,16 @@ const curiositiesData = [
 ]
 export const Curiosities = () => {
   return (
-    <Stack direction="row" mt="28" spacing="24" px="6">
+    <Stack
+      direction="row"
+      justify="center"
+      align="center"
+      wrap="wrap"
+      mt={["9", "28"]}
+      spacing={["12", "24"]}
+      px={["4", "6"]}
+      mx="auto"
+    >
       {curiositiesData.map((data) => (
         <CuriosityCard
           key={data.id}
