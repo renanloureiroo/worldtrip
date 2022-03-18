@@ -25,6 +25,8 @@ import { prismicClient } from "../../services/prismic"
 import Image from "next/image"
 
 import { FiAlertCircle } from "react-icons/fi"
+import { Content } from "../../components/Continent/Content"
+import { Cities } from "../../components/Continent/Cities"
 
 type ImageType = {
   alt: string
@@ -56,141 +58,9 @@ const Continent = ({ continent }: ContinentProps) => {
     <Flex align="center" direction="column">
       <Banner url={continent.banner.url} title={continent.name} />
 
-      <SimpleGrid
-        flex="1"
-        mt="20"
-        minChildWidth="320px"
-        alignItems="center"
-        maxW={1200}
-        px={5}
-        as="main"
-      >
-        <Box>
-          <Text fontSize="2xl" textAlign="justify">
-            {continent.description}
-          </Text>
-        </Box>
+      <Content continent={continent} />
 
-        <Stack direction="row" spacing="10" align="center" justify="center">
-          <Flex align="center" justify="center" direction="column">
-            <Text
-              as="strong"
-              fontWeight="semibold"
-              color="brand.500"
-              fontSize="5xl"
-            >
-              {continent.quantity_countries}
-            </Text>
-            <Text fontWeight="semibold" fontSize="2xl">
-              países
-            </Text>
-          </Flex>
-
-          <Flex align="center" justify="center" direction="column">
-            <Text
-              as="strong"
-              fontWeight="semibold"
-              color="brand.500"
-              fontSize="5xl"
-            >
-              {continent.quantity_languages}
-            </Text>
-            <Text fontWeight="semibold" fontSize="2xl">
-              línguas
-            </Text>
-          </Flex>
-
-          <Flex align="center" justify="center" direction="column">
-            <Text
-              as="strong"
-              fontWeight="semibold"
-              color="brand.500"
-              fontSize="5xl"
-            >
-              27
-            </Text>
-            <Text fontWeight="semibold" fontSize="2xl">
-              cidades +100{" "}
-              <Tooltip
-                hasArrow
-                label="Cidades mais visitadas!"
-                aria-label="informação"
-              >
-                <span>
-                  <Icon
-                    cursor="pointer"
-                    as={FiAlertCircle}
-                    fontSize="md"
-                    color="brand.700"
-                  />
-                </span>
-              </Tooltip>
-            </Text>
-          </Flex>
-        </Stack>
-      </SimpleGrid>
-
-      <Box my="20" w="100%" maxW={1200} px={5}>
-        <Heading fontWeight="medium" fontSize="4xl">
-          Cidades +100
-        </Heading>
-        <Flex wrap="wrap" alignItems="flex-start" gap="40px" flex="1" mt="10">
-          {continent.cities_top.map((city) => (
-            <Box bg="white" width={256} key={city.name}>
-              <Box
-                w="256px"
-                height="173px"
-                borderRadius="4px 4px 0px 0px"
-                overflow="hidden"
-              >
-                <Image
-                  src={city.photo.url}
-                  width={256}
-                  height={173}
-                  alt={city.photo.alt}
-                />
-              </Box>
-              <Flex
-                borderWidth="0px 1px 1px 1px"
-                borderColor="brand.500"
-                align="center"
-                justify="space-between"
-                px="6"
-                py="4"
-                borderRadius="0px 0px 4px 4px"
-              >
-                <Box>
-                  <Text fontSize="xl" fontWeight="semibold" lineHeight="25px">
-                    {city.name}
-                  </Text>
-                  <Text
-                    mt="3"
-                    fontSize="md"
-                    color="brand.700"
-                    fontWeight="medium"
-                    lineHeight="26px"
-                  >
-                    {city.country}
-                  </Text>
-                </Box>
-                <Box
-                  width="30px"
-                  height="30px"
-                  borderRadius="15px"
-                  overflow="hidden"
-                >
-                  <Image
-                    src={city.flag.url}
-                    alt={city.flag.alt}
-                    width={30}
-                    height={30}
-                  />
-                </Box>
-              </Flex>
-            </Box>
-          ))}
-        </Flex>
-      </Box>
+      <Cities citiesTop={continent.cities_top} />
     </Flex>
   )
 }
