@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center" >
+  <img src="https://user-images.githubusercontent.com/63200402/160479281-9aa126df-73e9-4496-996e-509d28eb684e.png"/>
+</div>
 
-## Getting Started
+<div align="center" style="margin-top:50px">
+  <img src="https://user-images.githubusercontent.com/63200402/160481115-c31d576b-de98-4a2b-ab09-4dd20b478130.png"/>
+</div>
 
-First, run the development server:
+#
 
-```bash
-npm run dev
-# or
-yarn dev
+<p style="margin:50px 0">Conheça melhor nossos continentes, saiba quais são as principais cidades de cada um deles.</p>
+
+# Screenshot 📸
+
+<div align="center" style="">
+  <img src="https://user-images.githubusercontent.com/63200402/160483295-147c03ea-7957-41d7-ab17-b5506fa7d7b4.png"/>
+</div>
+
+
+# Technologies 🚀
+* [Next.js](https://nextjs.org/)
+* [Prismic](https://prismic.io/)
+* [Chakra-ui](https://chakra-ui.com/)
+
+<div style="margin: 20px 0"></div>
+
+# Motivation 💪
+<p style="margin-bottom: 30px">Continuando o aprendizado sobre construção de interfaces declarativas utilizando Chakra-UI.</p>
+
+
+# How to run 💻
+```
+  # Clone Repository
+  $ git clonehttps://github.com/renanloureiroo/worldtrip.git
+```
+```
+  # Criar arquivo .env.local e preencher as variáveis
+  # prismic
+  PRISMIC_ENDPOINT=
+  PRISMIC_ACCESS_TOKEN=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+  # Install Dependencies
+  $ yarn
+  # Run application
+  $ yarn dev
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# License
+[MIT](https://choosealicense.com/licenses/mit/)
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
